@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
-import { useTable } from "react-table";
+import { useTable, usePagination } from "react-table";
 import { GetRequest } from "../../Utilities/NetworkAxios";
+// import "./Assets/Style/style.css";
 
 function Table() {
   const [users, setUsers] = useState([]);
@@ -88,54 +89,77 @@ function Table() {
 
   const usersData = useMemo(() => [...users], [users]);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable<any>({ columns, data: usersData });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    pageOptions,
+    state,
+    prepareRow,
+  } = useTable<any>({ columns, data: usersData }, usePagination);
+
+  const { pageIndex }: any = state;
 
   return (
-    <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
-                style={{
-                  borderBottom: "solid 3px red",
-                  background: "aliceblue",
-                  color: "black",
-                  fontWeight: "bold",
-                }}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                      background: "papayawhip",
-                    }}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
+    <>
+      <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th
+                  {...column.getHeaderProps()}
+                  style={{
+                    borderBottom: "solid 3px red",
+                    background: "aliceblue",
+                    color: "black",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {column.render("Header")}
+                </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {page.map((row: any) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell: any) => {
+                  return (
+                    <td
+                      {...cell.getCellProps()}
+                      style={{
+                        padding: "10px",
+                        border: "solid 1px gray",
+                        background: "papayawhip",
+                      }}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <div className="btn">
+        <span>
+          Page{" "}
+          <strong>
+            {pageIndex + 1}of {pageOptions.length}
+          </strong>{" "}
+        </span>
+        <button onClick={() => previousPage()}>Previous</button>
+        <button onClick={() => nextPage()}>Next</button>
+      </div>
+    </>
   );
 }
 export default Table;
