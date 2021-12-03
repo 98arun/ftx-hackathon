@@ -1,7 +1,12 @@
+import Table from "./Components/table/Table";
+import "./Assets/Style/style.css";
 function App() {
   return (
     <>
-      <h1>App heading</h1>
+      <div className="main-container">
+        <h1>Table Content</h1>
+        <Table />
+      </div>
     </>
   );
 }
