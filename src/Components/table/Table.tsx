@@ -60,6 +60,7 @@ function Table() {
       <div className='container'>
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         <Link to="/GenerateQRCode" className='link'>GenerateQRCode</Link>
+        <Link to="/merchantregistration" className='link'>Merchant Registration</Link>
       </div>
 
 

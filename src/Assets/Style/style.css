@@ -74,7 +74,10 @@ button {
   border-radius: 10px;
   padding: 4px;
   border: 1px solid #04AA6D;
+  display: block;
+  margin: 10px auto;
 }
+
 
 
 .container {
@@ -89,9 +92,10 @@ button {
   text-decoration: none;
   margin-right: 20px;
   color: white;
-  padding: 10px;
+  padding: 8px;
   background-color: #04AA6D;
   border-radius: 15px;
+  margin-top: 17px;
 }
 
 .input-qr {
@@ -101,4 +105,19 @@ button {
   border-radius: 5px;
   border: 1px solid green;
   margin-left: 15px;
+}
+
+
+.heading {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 40px;
+}
+
+.mt4 {
+  margin-top: 40px;
+}
+
+.ml45 {
+  margin-left: 450px;
 }
