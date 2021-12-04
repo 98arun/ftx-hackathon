@@ -1,13 +1,21 @@
-import { useEffect, useMemo, useState } from "react";
-import { useTable, usePagination, useSortBy, useGlobalFilter } from "react-table";
+import { memo, useEffect, useMemo, useState } from "react";
+import {
+  useTable,
+  usePagination,
+  useSortBy,
+  useGlobalFilter,
+} from "react-table";
 import { GetRequest } from "../../Utilities/NetworkAxios";
-import Mock_data from '../MOCK_DATA.json'
+import Mock_data from "../MOCK_DATA.json";
 import "../../Assets/Style/style.css";
-import { COLUMNS } from './columns'
-import GlobalFilter from './GlobalFilter'
+import { COLUMNS } from "./columns";
+import GlobalFilter from "./GlobalFilter";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import GenerateQRCode from "../generateQRCode/generateQRCode";
 
 function Table() {
   const [users, setUsers] = useState<any>([]);
+
   const fetchUsers = async () => {
     // const response = await GetRequest("https://fakestoreapi.com/Users");
     // if (!response) {
@@ -44,8 +52,7 @@ function Table() {
   //   []
   // );
 
-
-  const columns = useMemo(() => COLUMNS, [])
+  const columns = useMemo(() => COLUMNS, []);
 
   const usersData = useMemo(() => [...users], [users]);
 
@@ -59,30 +66,35 @@ function Table() {
     pageOptions,
     state,
     prepareRow,
-    setGlobalFilter
-  }: any = useTable<any>({ columns, data: usersData }, useGlobalFilter, useSortBy, usePagination);
+    setGlobalFilter,
+  }: any = useTable<any>(
+    { columns, data: usersData },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  );
 
   const { pageIndex, globalFilter }: any = state;
 
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <Link to="/GenerateQRCode">GenerateQRCode</Link>
+
       <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
-        <thead >
+        <thead>
           {headerGroups.map((headerGroups: any) => (
             <tr {...headerGroups.getHeaderGroupProps()}>
-              {
-                headerGroups.headers.map((column: any) => (
-                  <th{...column.getHeaderProps([column.getSortByToggleProps()])}>{column.render('Headers')}
-                    <span>
-                      {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : ''}
-                    </span>
-                  </th>
-                ))
-              }
+              {headerGroups.headers.map((column: any) => (
+                <th {...column.getHeaderProps([column.getSortByToggleProps()])}>
+                  {column.render("Headers")}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? " ▼" : " ▲") : ""}
+                  </span>
+                </th>
+              ))}
             </tr>
           ))}
-
         </thead>
 
         <tbody {...getTableBodyProps()}>
@@ -122,9 +134,7 @@ function Table() {
     </>
   );
 }
-export default Table;
-
-
+export default memo(Table);
 
 // {
 //   "currency": "INR",
