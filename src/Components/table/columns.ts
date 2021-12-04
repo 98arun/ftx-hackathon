@@ -25,29 +25,3 @@ export const COLUMNS = [
     }
 ]
 
-
-
-//   {
-      //     Header: "merchantKey",
-      //     accessor: "merchantKey",
-      //   },
-      //   {
-      //     Header: "userId",
-      //     accessor: "userId",
-      //   },
-      //   {
-      //     Header: "paymentId",
-      //     accessor: "paymentId",
-      //   },
-      //   {
-      //     Header: "amount",
-      //     accessor: "amount",
-      //   },
-      //   {
-      //     Header: "createdAt",
-      //     accessor: "createdAt",
-      //   },
-      //   {
-      //     Header: "status",
-      //     accessor: "status",
-      //   },

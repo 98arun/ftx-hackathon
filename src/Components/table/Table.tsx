@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   useTable,
   usePagination,
@@ -29,28 +29,6 @@ function Table() {
     fetchUsers();
   }, []);
 
-  // const data = useMemo(
-  //   () => [
-  //     //   {
-  //     //     merchantKey: "abcd123",
-  //     //     userId: "user12",
-  //     //     paymentId: "ffzz44ws",
-  //     //     amount: 500,
-  //     //     createdAt: 22 / 22 / 22,
-  //     //     status: 402,
-  //     //   },
-  //     {
-  //       id: 1,
-  //       first_name: "Goldy",
-  //       last_name: "Kleinsinger",
-  //       email: "gkleinsinger0@51.la",
-  //       phone: "12121@51.la",
-  //       currency: "Dinar",
-  //     }
-
-  //   ],
-  //   []
-  // );
 
   const columns = useMemo(() => COLUMNS, []);
 
@@ -135,7 +113,7 @@ function Table() {
     </>
   );
 }
-export default memo(Table);
+export default Table;
 
 // {
 //   "currency": "INR",

@@ -54,8 +54,10 @@ button {
   height: 40px;
   width: 90px;
   border-radius: 20px;
-  background: orange;
+  background: #04AA6D;
   margin-left: 10px;
+  color: white;
+  border: none
 }
 
 .container-pagination {
@@ -67,10 +69,11 @@ button {
 }
 
 .inputSearch {
-  height: 33px;
+  height: 40px;
   width: 600px;
   border-radius: 10px;
-  border: 1px solid green;
+  padding: 4px;
+  border: 1px solid #04AA6D;
 }
 
 
@@ -85,7 +88,10 @@ button {
   text-decoration: none;
   text-decoration: none;
   margin-right: 20px;
-  color: purple;
+  color: white;
+  padding: 10px;
+  background-color: #04AA6D;
+  border-radius: 15px;
 }
 
 .input-qr {
