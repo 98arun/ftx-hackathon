@@ -78,10 +78,15 @@ function Table() {
 
   return (
     <>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      <Link to="/GenerateQRCode">GenerateQRCode</Link>
 
-      <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+      <div className='container'>
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        <Link to="/GenerateQRCode" className='link'>GenerateQRCode</Link>
+      </div>
+
+
+
+      <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroups: any) => (
             <tr {...headerGroups.getHeaderGroupProps()}>
@@ -106,11 +111,6 @@ function Table() {
                   return (
                     <td
                       {...cell.getCellProps()}
-                      style={{
-                        padding: "10px",
-                        border: "solid 1px gray",
-                        background: "papayawhip",
-                      }}
                     >
                       {cell.render("Cell")}
                     </td>
@@ -121,8 +121,8 @@ function Table() {
           })}
         </tbody>
       </table>
-      <div className="btn">
-        <span>
+      <div className='container-pagination'>
+        <span className='pagination'>
           Page{" "}
           <strong>
             {pageIndex + 1}of {pageOptions.length}
@@ -131,6 +131,7 @@ function Table() {
         <button onClick={() => previousPage()}>Previous</button>
         <button onClick={() => nextPage()}>Next</button>
       </div>
+
     </>
   );
 }

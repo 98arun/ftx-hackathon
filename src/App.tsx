@@ -5,7 +5,6 @@ function App() {
   return (
     <>
       <div className="main-container">
-        <h1>Table Content</h1>
         <Table />
       </div>
     </>

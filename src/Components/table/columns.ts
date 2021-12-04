@@ -16,7 +16,7 @@ export const COLUMNS = [
         accessor: 'email'
     },
     {
-        Headers: 'Phone NO',
+        Headers: 'phone NO',
         accessor: 'phone'
     },
     {

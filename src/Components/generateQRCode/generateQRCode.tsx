@@ -50,8 +50,9 @@ export default class GenerateQRCode extends React.Component {
       <div style={styles.root}>
         <h1 style={styles.h1}>QRCode with JSON</h1>
         <div style={styles.qrcode}>
-          <div>
+          <div >
             <input
+              className='input-qr'
               type="text"
               name="merchantId"
               onChange={this._handleInputChange}
@@ -59,17 +60,20 @@ export default class GenerateQRCode extends React.Component {
             />
             <input
               type="text"
+              className='input-qr'
               name="amount"
               onChange={this._handleInputChange}
               placeholder="Enter Amount (Optional)"
             />
             <input
               type="text"
+              className='input-qr'
               name="invoiceId"
               onChange={this._handleInputChange}
               placeholder="Enter Invoice Id (Optional)"
             />
           </div>
+
           <div style={{ marginTop: "40px" }}>
             {this._renderQRCodeGeneratorView()}
           </div>
