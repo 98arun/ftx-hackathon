@@ -1,27 +1,36 @@
 export const COLUMNS = [
     {
-        Headers: 'id',
-        accessor: 'id'
+        Headers: 'Order id',
+        accessor: 'order_id'
     },
     {
-        Headers: 'first_name',
-        accessor: 'first_name'
+        Headers: 'Amount',
+        accessor: 'amount'
     },
     {
-        Headers: 'last_name',
-        accessor: 'last_name'
+        Headers: 'Currency',
+        accessor: 'currency'
     },
     {
-        Headers: ' email',
+        Headers: 'Status',
+        accessor: "status"
+    },
+    {
+        Headers: 'Bank',
+        accessor: 'bank'
+    },
+    {
+        Headers: 'E-mail',
         accessor: 'email'
     },
+    
     {
-        Headers: 'phone NO',
-        accessor: 'phone'
+        Headers: 'Phone No.',
+        accessor: 'contact'
     },
     {
-        Headers: 'currency',
-        accessor: 'currency'
+        Headers: 'Method',
+        accessor: 'method'
     }
 ]
 

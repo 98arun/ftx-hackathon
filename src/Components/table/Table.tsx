@@ -16,19 +16,16 @@ import GenerateQRCode from "../generateQRCode/generateQRCode";
 function Table() {
   const [users, setUsers] = useState<any>([]);
 
-  const fetchUsers = async () => {
-    // const response = await GetRequest("https://fakestoreapi.com/Users");
-    // if (!response) {
-    //   return;
-    // }
-    setUsers(Mock_data);
-  };
-  console.log("Users: ", users);
-
   useEffect(() => {
+    const fetchUsers = async () => {
+      const response = await GetRequest("http://localhost:4000/rzpay/payments");
+      if (!response) {
+        return;
+      }
+      setUsers(response.data.results);
+    };
     fetchUsers();
   }, []);
-
 
   const columns = useMemo(() => COLUMNS, []);
 
@@ -56,13 +53,12 @@ function Table() {
 
   return (
     <>
-
-      <div className='container'>
+      <div className="container">
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-        <Link to="/GenerateQRCode" className='link'>GenerateQRCode</Link>
+        <Link to="/GenerateQRCode" className="link">
+          GenerateQRCode
+        </Link>
       </div>
-
-
 
       <table {...getTableProps()}>
         <thead>
@@ -87,11 +83,7 @@ function Table() {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell: any) => {
                   return (
-                    <td
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </td>
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
               </tr>
@@ -99,8 +91,8 @@ function Table() {
           })}
         </tbody>
       </table>
-      <div className='container-pagination'>
-        <span className='pagination'>
+      <div className="container-pagination">
+        <span className="pagination">
           Page{" "}
           <strong>
             {pageIndex + 1}of {pageOptions.length}
@@ -109,7 +101,6 @@ function Table() {
         <button onClick={() => previousPage()}>Previous</button>
         <button onClick={() => nextPage()}>Next</button>
       </div>
-
     </>
   );
 }
